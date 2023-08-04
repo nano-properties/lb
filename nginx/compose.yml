@@ -1,0 +1,11 @@
+services:
+  nginx:
+    image: public.ecr.aws/docker/library/nginx:1.25.3-alpine
+    container_name: nginx
+    network_mode: host
+    restart: always
+    ports:
+      - '80:80'
+    volumes:
+      - ./conf.d:/etc/nginx/conf.d:ro
+      - ./html:/usr/share/nginx/html:ro
