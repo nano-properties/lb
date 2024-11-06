@@ -5,5 +5,5 @@ services:
       - ./volumes:/usr/app/data/ 
     ports:
       - "127.0.0.1:3366:8080"
-    enviroment:
+    environment:
       NUXT_PUBLIC_NC_BACKEND_URL: https://db.nano-exp.com
