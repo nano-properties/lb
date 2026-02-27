@@ -1,6 +1,6 @@
 location = /_auth_request {
     internal;
-    proxy_pass          https://auth.nano-exp.com/api/protected;
+    proxy_pass          http://127.0.0.1:3500/api/protected;
     proxy_set_header    Host auth.nano-exp.com;
     proxy_set_header    X-Real-IP $remote_addr;
     proxy_set_header    X-Forwarded-For $proxy_add_x_forwarded_for;
