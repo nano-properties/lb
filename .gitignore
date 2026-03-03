@@ -1,9 +1,5 @@
 .idea/
 .DS_Store
-.env
-htpasswd
-volumes/ 
-# nginx
-nginx/html/*
-!nginx/html/50x.html
-!nginx/html/favicon.ico
+html/*
+!html/50x.html
+!html/favicon.ico
