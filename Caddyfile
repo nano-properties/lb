@@ -60,6 +60,13 @@ frp.nano-exp.com:80 {
 }
 
 opencode.nano-exp.com:80 {
+	@manifest path /site.webmanifest
+	handle @manifest {
+		reverse_proxy 127.0.0.1:4096 {
+			header_up Host {host}
+			header_up X-Real-IP {remote}
+		}
+	}
 	handle {
 		forward_auth 127.0.0.1:3500 {
 			uri /api/protected
@@ -70,6 +77,7 @@ opencode.nano-exp.com:80 {
 				redir https://auth.nano-exp.com/login?redirect={scheme}://{host}{uri}
 			}
 		}
+		header Content-Security-Policy "(script-src [^;]*)" "${1} https://static.cloudflareinsights.com"
 		reverse_proxy 127.0.0.1:4096 {
 			header_up Host {host}
 			header_up X-Real-IP {remote}
