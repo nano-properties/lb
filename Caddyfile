@@ -60,8 +60,8 @@ frp.nano-exp.com:80 {
 }
 
 opencode.nano-exp.com:80 {
-	@manifest path /site.webmanifest
-	handle @manifest {
+	@bypass path /pty/* /site.webmanifest
+	handle @bypass {
 		reverse_proxy 127.0.0.1:4096 {
 			header_up Host {host}
 			header_up X-Real-IP {remote}
