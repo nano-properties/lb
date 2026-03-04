@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 cd "$(dirname "$0")" || exit 1
 
-caddy run --config ./Caddyfile --adapter caddyfile
+caddy run --config ./caddyfile --adapter caddyfile
