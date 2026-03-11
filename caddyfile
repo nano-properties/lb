@@ -105,6 +105,12 @@ opencode.nano-exp.com:80 {
 	}
 }
 
+openclaw-2026.nano-exp.com:80 {
+	reverse_proxy 127.0.0.1:2026 {
+		header_up Host {host}
+		header_up X-Real-IP {remote}
+	}
+}
 
 # pai.mn
 
