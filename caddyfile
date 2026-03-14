@@ -41,7 +41,7 @@ s.nano-exp.com:80, static.nano-exp.com:80 {
 	try_files {path} {path}/index.html index.html
 }
 
-frp.nano-exp.com:80 {
+tun.nano-exp.com:80 {
 	handle {
 		forward_auth 127.0.0.1:3500 {
 			uri /api/protected
