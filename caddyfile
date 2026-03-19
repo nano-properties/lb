@@ -86,10 +86,6 @@ code.nano.properties:80 {
 	}
 }
 
-openclaw-2026.nano.properties:80 {
-	redir https://pai-mn.github.io/openclaw-2026{uri} 308
-}
-
 pai.mn:80, www.pai.mn:80 {
 	reverse_proxy 127.0.0.1:3300 {
 		header_up Host {host}
@@ -102,4 +98,9 @@ ai.pai.mn:80 {
 		header_up Host {host}
 		header_up X-Real-IP {remote}
 	}
+}
+
+# legacy redirect
+openclaw-2026.nano-exp.com:80 {
+	redir https://pai-mn.github.io/openclaw-2026{uri} 308
 }
