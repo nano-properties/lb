@@ -1,28 +1,28 @@
 auth.nano.properties {
 	reverse_proxy 127.0.0.1:3500 {
 		header_up Host {host}
-		header_up X-Real-IP {remote}
+		header_up X-Real-IP {client_ip}
 	}
 }
 
 i.nano.properties, ineffa.nano.properties {
 	reverse_proxy 127.0.0.1:3000 {
 		header_up Host {host}
-		header_up X-Real-IP {remote}
+		header_up X-Real-IP {client_ip}
 	}
 }
 
 claw.nano.properties {
 	reverse_proxy 127.0.0.1:18789 {
 		header_up Host {host}
-		header_up X-Real-IP {remote}
+		header_up X-Real-IP {client_ip}
 	}
 }
 
 nano.properties, www.nano.properties {
 	reverse_proxy 127.0.0.1:3000 {
 		header_up Host {host}
-		header_up X-Real-IP {remote}
+		header_up X-Real-IP {client_ip}
 	}
 }
 
@@ -40,12 +40,12 @@ tun.nano.properties {
 			header_up X-Original-URI {scheme}://{host}{uri}
 			@error status 401 403
 			handle_response @error {
-				redir https://auth.nano.properties/login?redirect={scheme}://{host}{uri}
+				redir https://auth.nano.properties/login?redirect={scheme}%3A%2F%2F{host}{%uri}
 			}
 		}
 		reverse_proxy 127.0.0.1:5500 {
 			header_up Host {host}
-			header_up X-Real-IP {remote}
+			header_up X-Real-IP {client_ip}
 		}
 	}
 }
@@ -55,7 +55,7 @@ code.nano.properties {
 	handle @bypass {
 		reverse_proxy 127.0.0.1:4096 {
 			header_up Host {host}
-			header_up X-Real-IP {remote}
+			header_up X-Real-IP {client_ip}
 		}
 	}
 	handle {
@@ -65,14 +65,14 @@ code.nano.properties {
 			header_up X-Original-URI {scheme}://{host}{uri}
 			@error status 401 403
 			handle_response @error {
-				redir https://auth.nano.properties/login?redirect={scheme}://{host}{uri}
+				redir https://auth.nano.properties/login?redirect={scheme}%3A%2F%2F{host}{%uri}
 			}
 		}
 
 		header -Content-Security-Policy
 		reverse_proxy 127.0.0.1:4096 {
 			header_up Host {host}
-			header_up X-Real-IP {remote}
+			header_up X-Real-IP {client_ip}
 		}
 	}
 }
@@ -80,32 +80,27 @@ code.nano.properties {
 pai.mn, www.pai.mn {
 	reverse_proxy 127.0.0.1:3300 {
 		header_up Host {host}
-		header_up X-Real-IP {remote}
+		header_up X-Real-IP {client_ip}
 	}
 }
 
 ai.pai.mn {
 	reverse_proxy 127.0.0.1:5090 {
 		header_up Host {host}
-		header_up X-Real-IP {remote}
+		header_up X-Real-IP {client_ip}
 	}
 }
 
 tokenai.dev, www.tokenai.dev {
 	reverse_proxy 127.0.0.1:6200 {
 		header_up Host {host}
-		header_up X-Real-IP {remote}
+		header_up X-Real-IP {client_ip}
 	}
 }
 
 sp.nano.properties {
 	reverse_proxy 127.0.0.1:1088 {
 		header_up Host {host}
-		header_up X-Real-IP {remote}
+		header_up X-Real-IP {client_ip}
 	}
-}
-
-# legacy redirect
-openclaw-2026.nano-exp.com {
-	redir https://pai-mn.github.io/openclaw-2026{uri} 308
 }
