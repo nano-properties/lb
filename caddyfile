@@ -24,9 +24,9 @@ claw.nano.properties {
 }
 
 s.nano.properties, static.nano.properties {
-	root * ./html
-	file_server
-	try_files {path} {path}/index.html index.html
+    root * ./html
+    try_files {path} {path}/index.html
+    file_server browse
 }
 
 tun.nano.properties {
